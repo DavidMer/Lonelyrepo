@@ -368,6 +368,56 @@ public class Picture extends SimplePicture
     System.out.println( count );
   }
 
+  public void copy(Picture fromPic, 
+                 int startRow, int startCol, int endRow, int endCol)
+  {
+    Pixel fromPixel = null;
+    Pixel toPixel = null;
+    Pixel[][] toPixels = this.getPixels2D();
+    Pixel[][] fromPixels = fromPic.getPixels2D();
+
+    for (int fromRow = 0, toRow = startRow; 
+         fromRow < fromPixels.length &&
+         toRow < endRow; 
+         fromRow++, toRow++)
+    {
+      for (int fromCol = 0, toCol = startCol; 
+           fromCol < fromPixels[0].length &&
+           toCol < endCol;  
+           fromCol++, toCol++)
+      {
+        fromPixel = fromPixels[fromRow][fromCol];
+        toPixel = toPixels[toRow][toCol];
+        toPixel.setColor(fromPixel.getColor());
+      }
+    }   
+  }
+
+  public void myCollage()
+  {
+    Picture flower1 = new Picture("flower1.jpg");
+    Picture flower2 = new Picture("flower2.jpg");
+    this.copy(flower1,0,0);
+    this.copy(flower2,100,0);
+
+    Picture flowerNoBlue = new Picture(flower2);
+    flowerNoBlue.zeroBlue();
+
+    Picture flowerGrey = new Picture(flower2);
+    flowerGrey.grayscale();
+
+    Picture flowerNeg = new Picture(flower1);
+    flowerNeg.negate();
+
+    this.copy(flowerGrey,200,0);
+    this.copy(flowerNoBlue,300,0);
+
+    this.copy(flowerNeg,400,0);
+    this.copy(new Picture( "snowman.jpg" ),500,0);
+    this.mirrorVertical();
+    this.write("collage2.jpg");
+  }
+
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
