@@ -51,6 +51,12 @@ public class PictureTester
     swan.explore();
   }
 
+  /*
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      My activities start here:
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  */
+
   public static void testKeepOnlyBlue() {
     Picture beach = new Picture("beach.jpg");
     beach.explore();
@@ -127,6 +133,14 @@ public class PictureTester
     canvas.explore();
   }
 
+  public static void testEdgeDetect()
+  {
+    Picture temple = new Picture("seagull.jpg");
+    temple.explore();
+    temple.edgeDetection2();
+    temple.explore();
+  } 
+
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -160,5 +174,6 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+    testEdgeDetect();
   }
 }

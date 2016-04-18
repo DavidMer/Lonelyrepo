@@ -221,6 +221,12 @@ public class Picture extends SimplePicture
     }
   }
   
+  /*
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      My activities start here:
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  */
+
   public void keepOnlyBlue() {
     Pixel[][] pixels = this.getPixels2D();
     
@@ -417,6 +423,26 @@ public class Picture extends SimplePicture
     this.mirrorVertical();
     this.write("collage2.jpg");
   }
+
+   public void edgeDetection2()
+  {
+    Pixel pixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+
+    for (int row = 0; row < pixels.length; row++)
+     {
+     
+     for (int col = 0;
+      col < pixels[0].length; col++)
+     {
+      pixel = pixels[row][col];
+        if (pixel.colorDistance(Color.WHITE) > pixel.colorDistance(Color.BLACK))
+          pixel.setColor(Color.BLACK);
+        else
+          pixel.setColor(Color.WHITE);
+     }
+  }
+}
 
   /* Main method for testing - each class in Java can have a main 
    * method 
