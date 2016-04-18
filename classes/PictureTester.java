@@ -77,6 +77,13 @@ public class PictureTester
     beach.grayscale();
     beach.explore(); 
   }
+  
+    public static void testMirrorDiagnol(){
+        Picture beach = new Picture("beach.jpg");
+        beach.explore();
+        beach.mirrorDiagnol();
+        beach.explore();
+    }  
 
     public static void testMirrorVerticalRightToLeft()
   {
